@@ -1,7 +1,7 @@
 merocoin-seeder
 ===============
 
-merocoin-seeder-seeder is a crawler for the Mero network, which exposes a list
+merocoin-seeder is a crawler for the Mero network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:
