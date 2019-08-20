@@ -22,8 +22,6 @@ static const char* ppszTypeName[] =
     "block",
 };
 
-unsigned char pchMessageStart[4] = { 0x5e, 0xa2, 0x8f, 0x5f };
-
 CMessageHeader::CMessageHeader()
 {
     memcpy(pchMessageStart, ::pchMessageStart, sizeof(pchMessageStart));

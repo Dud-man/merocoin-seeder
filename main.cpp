@@ -82,17 +82,17 @@ public:
           host = optarg;
           break;
         }
-        
+
         case 'm': {
           mbox = optarg;
           break;
         }
-        
+
         case 'n': {
           ns = optarg;
           break;
         }
-        
+
         case 't': {
           int n = strtol(optarg, NULL, 10);
           if (n > 0 && n < 1000) nThreads = n;
@@ -154,8 +154,8 @@ public:
     }
     if (host != NULL && ns == NULL) showHelp = true;
     if (showHelp) {
-        fprintf(stderr, help, argv[0]);
-        exit(0);
+      fprintf(stderr, help, argv[0]);
+      exit(0);
     }
   }
 };
@@ -400,13 +400,11 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.meroexplorer.com", ""};
-static const string testnet_seeds[] = {"testnet-seed.meroexplorer.com", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 14550), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", mainnet_port), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -458,10 +456,7 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0x4a;
-      pchMessageStart[1] = 0xcd;
-      pchMessageStart[2] = 0x5e;
-      pchMessageStart[3] = 0x78;
+      std::copy(std::begin(pchMessageStart_testnet), std::end(pchMessageStart_testnet), std::begin(pchMessageStart));
       seeds = testnet_seeds;
       fTestNet = true;
   }
