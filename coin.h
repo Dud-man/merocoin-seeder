@@ -7,7 +7,7 @@
 
 #include <string>
 
-static const std::string mainnet_seeds[] = {"dnsseed.cpuchain.org", ""};
+static const std::string mainnet_seeds[] = {"dnsseed.meroexplorer.com", "45.220.58.41"};
 
 static const std::string testnet_seeds[] = {""};
 
